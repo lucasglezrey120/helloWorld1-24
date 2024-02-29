@@ -1,0 +1,45 @@
+/*default styles for text types*/
+p{
+    font-family:system-ui;
+    display:block;
+    font-size:14px;
+}
+
+h2{
+    display:block;
+    color:darkslategray;
+}
+
+table, tr, th{
+    border-style:solid;
+    border-color:indigo;
+    border-spacing:2px;
+}
+
+/*style using ID attribute*/
+p#custom-paragraph{
+    font-stretch:expanded;
+    width:50%;
+    background-color:#1DB954;
+}
+
+/*class attributes which will be used as parent and child classes*/
+.container{
+    display:flex;
+    margin:10px;
+}
+.left-list{
+    border-style:dotted;
+    padding:10px;
+    margin-right:10px;
+}
+.right-list{
+    border-style:dashed;
+    padding:10px
+}
+
+/*style for img with name 'logo'*/
+img.logo{
+    width:150px;
+    height:50px;
+}

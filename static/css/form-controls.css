@@ -1,0 +1,7 @@
+.input-group-prepend, .input-group-append {
+    width: 20%
+}
+
+.form-select {
+    border-radius: 0;
+}

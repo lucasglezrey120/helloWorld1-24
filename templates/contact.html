@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Contact
+{% endblock %}
+
+{% block page_head %}
+    Contact me
+{% endblock %}
+
+{% block page_contents %}
+    {% if form_submitted %}
+        <div class="col-12">
+            <p>I appreciate your donation! 🫡</p>
+        </div>
+        <div class = "col-md-8">
+            <p>Email Address: {{ request.form.get('email') }}</p>
+        </div>
+        <div class = "col-md-8">
+            <p>Name: {{ request.form.get('first_name')}} {{ request.form.get('last_name')}}</p>
+        </div>
+        <div class = "col-md-8">
+            <p>Donation: {{ request.form.get('amount_sent') }}.00 {{ request.form.get('currency_option') }}</p>
+        </div>
+        <div class = "col-md-8">
+            <p>I won't ever share your donation with anyone else 🤫</p>
+        </div>
+
+    {% else %}
+        <form class="m-3" action="{{ url_for('contact') }}" method="post">
+            <div class="row g-3 mb-4">
+              <div class="col">
+                <input type="text" class="form-control" name="first_name" placeholder="First name" aria-label="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" name="last_name" placeholder="Last name" aria-label="Last name">
+              </div>
+            </div>
+
+            <div class="input-group mb-4">
+              <input type="text" class="form-control" name="email" placeholder="Email" aria-label="Email">
+            </div>
+
+            <div class="mb-3">
+              <label for="basic-url" class="form-label">Please send me money</label>
+              <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <select class="form-select" name="currency_option" aria-label="Currency dropdown" style="border-radius:0;">
+                    <option selected value="USD">$</option>
+                    <option value="EUR">€</option>
+                    <option value="GBP">£</option>
+                    <option value="CNY">¥</option>
+                    <option value="BTC">₿</option>
+                  </select>
+              </div>
+                <input type="text" class="form-control" name="amount_sent" placeholder="Amount" aria-label="Amount">
+                <span class="input-group-text">.00</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Send</button>
+        </form>
+    {% endif %}
+{% endblock %}

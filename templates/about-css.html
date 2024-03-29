@@ -33,11 +33,9 @@
         <div class="right-list">
             My top 5 favorite colors:
             <ol>
-                <li style="color: black">Black</li>
-                <li style="color: purple">Purple</li>
-                <li style="color: silver">Silver</li>
-                <li style="color: red">Red</li>
-                <li style="color: blue">Blue</li>
+            {%  for color in favcolors %}
+                <li>{{ color }}</li>
+            {% endfor %}
             </ol>
         </div>
     </div>
@@ -74,6 +72,12 @@
         </tr>
     </table>
 
+    <h1>Find your birthday</h1>
+    <form>
+        <label for="datepicker">Choose a Date:</label>
+        <input type="date" id="datepicker" name="datepicker">
+        <input type="submit" value="Submit">
+    </form>
     <!--Final Paragraph with ID attribute-->
     <p id="custom-paragraph">I also like listening to music a lot. I listened to over 50,000 minutes on Spotify last year.
         My top 5 songs were Cheshire by ITZY, Raindrops (Insane) by Metro Boomin & Travis Scott, Shut Down by Blackpink,
@@ -85,6 +89,5 @@
 
     <!--Image with logo class attribute-->
     <img class="logo" src ="https://terpconnect.umd.edu/~jbono/bmgt407/images/smith-logo.png" alt="RHSmith Logo">
-
 </body>
 </html>

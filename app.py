@@ -53,12 +53,14 @@ def student_create():
         # post doesn't make a results page for the form submission, instead updates the db and redirects to viewall
         first_name = request.form['first_name']
         last_name = request.form['last_name']
+        # pull email field from the db
+        email = request.form['email']
         major_id = request.form['major_id']
 
         birth_date = request.form['birth_date']
         is_honors = True if 'is_honors' in request.form else False
 
-        student = Student(first_name=first_name, last_name=last_name, major_id=major_id,
+        student = Student(first_name=first_name, last_name=last_name, email = email, major_id=major_id,
                           birth_date=dt.strptime(birth_date, '%Y-%m-%d'), is_honors=is_honors)
         db.session.add(student)
         db.session.commit()
@@ -91,6 +93,7 @@ def student_edit(student_id):
         if student:
             student.first_name = request.form['first_name']
             student.last_name = request.form['last_name']
+            student.email = request.form['email']
             student.major_id = request.form['major_id']
             student.birthdate = dt.strptime(request.form['birth_date'], '%Y-%m-%d')
             student.num_credits_completed = request.form['num_credits_completed']

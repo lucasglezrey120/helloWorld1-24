@@ -9,6 +9,8 @@ class Student(db.Model):
     student_id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
+    # new email field in data definition
+    email = db.Column(db.String(100), unique=True, nullable=False)
     major_id = db.Column(db.Integer, db.ForeignKey('major.major_id'))
     birth_date = db.Column(db.DateTime, nullable=False)
     num_credits_completed = db.Column(db.Integer, nullable=False)
@@ -16,9 +18,10 @@ class Student(db.Model):
     is_honors = db.Column(db.Boolean, nullable=False)
 
     #create (initialize) w default values as func params
-    def __init__(self, first_name, last_name, major_id, birth_date, is_honors):
+    def __init__(self, first_name, last_name, email, major_id, birth_date, is_honors):
         self.first_name = first_name
         self.last_name = last_name
+        self.email = email
         self.major_id = major_id
         self.birth_date = birth_date
         self.num_credits_completed = 0

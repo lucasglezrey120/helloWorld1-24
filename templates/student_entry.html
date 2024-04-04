@@ -25,6 +25,7 @@
 
 <form class="row g-3"
       action="{{ url_for('student_edit', student_id=student['student_id']) if student else url_for('student_create') }}" method="post">
+    <!-- first name field dynamically adapts, editable if create or update mode, get database entry for view mode -->
   <div class="col-md-4">
     <label for="first_name" class="form-label"><strong>First Name</strong></label>
     {% if action and action in ['create', 'update'] %}
@@ -33,6 +34,7 @@
         <br>{{ student['first_name'] }}
     {% endif %}
   </div>
+<!-- last name field -->
   <div class="col-md-4">
     <label for="last_name" class="form-label"><strong>Last Name</strong></label>
     {% if action and action in ['create', 'update'] %}
@@ -41,6 +43,18 @@
         <br>{{ student['last_name'] }}
     {% endif %}
   </div>
+
+<!-- email field -->
+    <div class="col-md-4">
+    <label for="email" class="form-label"><strong>Email</strong></label>
+    {% if action and action in ['create', 'update'] %}
+        <input type="email" class="form-control" id="email" name="email" value = "{{ student['email'] if student else '' }}" maxlength="100" required>
+    {% else %}
+        <br>{{ student['email'] }}
+    {% endif %}
+  </div>
+
+<!-- bday field -->
   <div class="col-md-4">
     <label for="birth_date" class="form-label"><strong>Birth Date</strong></label>
     {% if action and action in ['create', 'update'] %}
@@ -51,6 +65,7 @@
     {% endif %}
   </div>
 
+<!-- major field -->
   <div class="col-md-4">
     <label for="major_id" class="form-label"><strong>Major</strong></label>
     {% if action and action in ['create', 'update'] %}
@@ -69,6 +84,7 @@
     {% endif %}
   </div>
 
+<!-- credits field can only be updated for read -->
   {% if action and action in ['read', 'update'] %}
   <div class="col-md-4">
     <label for="num_credits_completed" class="form-label"><strong>Number of Credits Completed</strong></label>
@@ -79,6 +95,7 @@
         <br> {{ student['num_credits_completed'] }}
     {% endif %}
   </div>
+      <!-- gpa field -->
   <div class="col-md-4">
     <label for="gpa" class="form-label"><strong>GPA</strong></label>
     {% if action and action in ['create', 'update'] %}

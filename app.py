@@ -108,7 +108,7 @@ def student_view(student_id):
         else:
             flash(f'Student attempting to be viewed could not be found!', 'error')
             return redirect(url_for('student_view_all'))
-
+    # let student see they're own entry if the user email equals the student email
     elif current_user.role == 'STUDENT':
         student = Student.query.filter_by(email=current_user.email).first()
         majors = Major.query.order_by(Major.major) \

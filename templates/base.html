@@ -17,19 +17,24 @@
                     <ul class="navbar-nav me-auto">
                         {% if current_user.role in ['ADMIN', 'MANAGER'] %}
                             <!-- check the correct_user role from python -->
-                        <li class="nav-item">
-                        <!-- request.endpoint is the current page (function from app.py) -->
-                          <a id="student_view_all" class="nav-link {% if request.endpoint=='student_view_all' %}active{%endif %}" href="{{ url_for('student_view_all') }}">View All Students</a>
-                        </li>
-                        {% elif current_user.is_authenticated %}
-                        <li class="nav-item">
-                          <a id="student_id" class="nav-link {% if request.endpoint=='student_view' %}active{%endif %}" href="{{ url_for('student_view', student_id=0) }}">View My Record</a>
-                        </li>
-                        {% endif %}
-                        {% if current_user.role in ['ADMIN', 'MANAGER'] %}
-                        <li class="nav-item">
-                          <a id="student_create" class="nav-link {% if request.endpoint=='student_create' %}active{%endif %}" href="{{ url_for('student_create') }}">Add New Student</a>
-                        </li>
+                            <!-- nav item for training -->
+                            <li class="nav-item">
+                                <a id="training" class="nav-link {% if request.endpoint=='training' %}active{%endif %}" href="{{ url_for('training') }}">Training</a>
+                            </li>
+
+                            <li class="nav-item">
+                            <!-- request.endpoint is the current page (function from app.py) -->
+                              <a id="student_view_all" class="nav-link {% if request.endpoint=='student_view_all' %}active{%endif %}" href="{{ url_for('student_view_all') }}">View All Students</a>
+                            </li>
+                            {% elif current_user.is_authenticated %}
+                            <li class="nav-item">
+                              <a id="student_id" class="nav-link {% if request.endpoint=='student_view' %}active{%endif %}" href="{{ url_for('student_view', student_id=0) }}">View My Record</a>
+                            </li>
+                            {% endif %}
+                            {% if current_user.role in ['ADMIN', 'MANAGER'] %}
+                            <li class="nav-item">
+                              <a id="student_create" class="nav-link {% if request.endpoint=='student_create' %}active{%endif %}" href="{{ url_for('student_create') }}">Add New Student</a>
+                            </li>
                         {% endif %}
                     </ul>
                 </div>

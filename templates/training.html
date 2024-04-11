@@ -7,9 +7,10 @@ Training
 {% block page_head %}Terpsys IS Training{% endblock %}
 
 {% block page_content %}
+    <!-- dynamic welcome msg -->
     <p>Welcome to your training for the TerpSys Student Information System.
     Training materials are currently under construction, but will be created very soon.
     Please check back soon or email {{ current_user.first_name }} {{ current_user.last_name }} at
-    <a href="mailto:<your email>">{{ current_user.email }}</a>
+    <a href="mailto:{{ current_user.email }}">{{ current_user.email }}</a>
     if you wish to be placed on the waiting list. </p>
 {% endblock %}
